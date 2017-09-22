@@ -51,8 +51,48 @@ public class PlayerTest {
         assertEquals( Value.ACE, player1.getHand().get(0).getValue() );
     }
 
+    @Test
+    public void getTwoCards() {
+        Card card1 = deck.removeCardAtRandom(numberGenerator);
+        Card card2 = deck.removeCardAtRandom(numberGenerator);
+        player1.addCardToHand(card1);
+        player1.addCardToHand(card2);
 
+        assertEquals( Suit.CLUBS, player1.getHand().get(0).getSuit() );
+        assertEquals( Value.ACE, player1.getHand().get(0).getValue() );
+        assertEquals( Suit.CLUBS, player1.getHand().get(1).getSuit() );
+        assertEquals( Value.KING, player1.getHand().get(1).getValue() );
 
+    }
+
+    @Test
+    public void canCalculateHand() {
+        Card card1 = deck.removeCardAtRandom(numberGenerator);
+        Card card2 = deck.removeCardAtRandom(numberGenerator);
+        player1.addCardToHand(card1);
+        player1.addCardToHand(card2);
+        assertEquals( 21, player1.getHandWorth());
+    }
+
+    @Test
+    public void hasTwoAces() {
+        Card aceSpades = new Card(Suit.SPADES, Value.ACE);
+        Card aceClubs = new Card(Suit.CLUBS, Value.ACE);
+        Card threeHearts = new Card(Suit.HEARTS, Value.THREE);
+        player1.addCardToHand(aceSpades);
+        player1.addCardToHand(aceClubs);
+        player1.addCardToHand(threeHearts);
+        ArrayList<Card> player1Hand = player1.getHand();
+        assertEquals( 2, player1.numOfAces(player1Hand));
+    }
+
+    @Test
+    public void hasNoAces() {
+        Card threeHearts = new Card(Suit.HEARTS, Value.THREE);
+        player1.addCardToHand(threeHearts);
+        ArrayList<Card> player1Hand = player1.getHand();
+        assertEquals( 0, player1.numOfAces(player1Hand));
+    }
 
 
 

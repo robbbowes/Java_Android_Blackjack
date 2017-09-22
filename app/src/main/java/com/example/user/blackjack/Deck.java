@@ -30,7 +30,14 @@ public class Deck {
         return deck.size();
     }
 
-
+    public void createDeck() {
+        for (Suit suit : Suit.values()) {
+            for (Value value : Value.values()) {
+                Card card = new Card(suit, value);
+                deck.add(card);
+            }
+        }
+    }
 
 //    Consider moving these to dealer
 
@@ -45,12 +52,4 @@ public class Deck {
         return randomCard;
     }
 
-    public void createDeck() {
-        for (Suit suit : Suit.values()) {
-            for (Value value : Value.values()) {
-                Card card = new Card(suit, value);
-                deck.add(card);
-            }
-        }
-    }
 }

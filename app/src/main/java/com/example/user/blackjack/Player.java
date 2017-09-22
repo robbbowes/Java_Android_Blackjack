@@ -29,6 +29,16 @@ public class Player {
         hand.add(card);
     }
 
+    public int numOfAces(ArrayList<Card> hand) {
+        int aceCount = 0;
+        for (Card card : hand ) {
+            if (card.getValue() == Value.ACE) {
+                aceCount++;
+            }
+        }
+        return aceCount;
+    }
+
     public int getHandWorth() {
         for (Card card : hand) {
             if (card.getValue() == Value.TWO) {
@@ -63,6 +73,8 @@ public class Player {
         }
         return handWorth;
     }
+
+
 
 
 }
