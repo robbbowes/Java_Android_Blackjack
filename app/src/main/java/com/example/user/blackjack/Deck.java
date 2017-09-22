@@ -30,6 +30,8 @@ public class Deck {
         return deck.size();
     }
 
+
+
 //    Consider moving these to dealer
 
     public Card getCardByIndex(int randomNum) {

@@ -11,9 +11,9 @@ public class Player {
     ArrayList<Card> hand;
     int handWorth;
 
-    public Player(String name, ArrayList<Card> hand, int handWorth) {
+    public Player(String name) {
         this.name = name;
-        this.hand = hand;
+        hand = new ArrayList<>();
         this.handWorth = 0;
     }
 
@@ -23,6 +23,10 @@ public class Player {
 
     public ArrayList<Card> getHand() {
         return hand;
+    }
+
+    public void addCardToHand(Card card) {
+        hand.add(card);
     }
 
     public int getHandWorth() {

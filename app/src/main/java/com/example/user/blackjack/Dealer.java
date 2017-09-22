@@ -9,9 +9,15 @@ import java.util.ArrayList;
 public class Dealer {
 
     Deck deck;
+    NumberGenerating numberGenerator;
 
     public Dealer(Deck deck) {
-        this.deck= deck;
+        this.deck = deck;
+    }
+
+    public void dealCard(Player player) {
+        Card randomCard = deck.removeCardAtRandom(numberGenerator);
+        player.addCardToHand(randomCard);
     }
 
 }
