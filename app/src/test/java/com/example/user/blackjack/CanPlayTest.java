@@ -18,16 +18,16 @@ public class CanPlayTest {
     RandomNumberGenerator numberGenerator;
     FixedNumberGenerator fixedNumberGenerator;
 
-    @Before
-    public void before() {
-        pl
-        deck = new Deck();
-        aceSpades = new Card(Suit.SPADES, Value.ACE);
-        threeHearts = new Card(Suit.HEARTS, Value.THREE);
-        twoClubs = new Card(Suit.CLUBS, Value.TWO);
-        numberGenerator = new RandomNumberGenerator();
-        fixedNumberGenerator = new FixedNumberGenerator();
-    }
+//    @Before
+//    public void before() {
+//        pl
+//        deck = new Deck();
+//        aceSpades = new Card(Suit.SPADES, Value.ACE);
+//        threeHearts = new Card(Suit.HEARTS, Value.THREE);
+//        twoClubs = new Card(Suit.CLUBS, Value.TWO);
+//        numberGenerator = new RandomNumberGenerator();
+//        fixedNumberGenerator = new FixedNumberGenerator();
+//    }
 
 
 }

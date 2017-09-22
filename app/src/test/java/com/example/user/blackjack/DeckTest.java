@@ -71,5 +71,7 @@ public class DeckTest {
         deck.addCardToDeck(aceSpades);
         assertEquals( aceSpades, deck.removeCardAtRandom(numberGenerator));
     }
+
+
 }
 
