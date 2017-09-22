@@ -6,10 +6,13 @@ import java.util.ArrayList;
  * Created by user on 22/09/2017.
  */
 
-public class Dealer implements CanPlay {
+public class Dealer {
 
-    public String name;
-    ArrayList<Card> hand;
-    public int handWorth;
+    Deck hand;
+
+    public Dealer(Deck hand) {
+        this.hand = hand;
+    }
+
 
 }
