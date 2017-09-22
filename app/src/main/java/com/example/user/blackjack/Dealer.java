@@ -8,11 +8,10 @@ import java.util.ArrayList;
 
 public class Dealer {
 
-    Deck hand;
+    Deck deck;
 
-    public Dealer(Deck hand) {
-        this.hand = hand;
+    public Dealer(Deck deck) {
+        this.deck= deck;
     }
-
 
 }
