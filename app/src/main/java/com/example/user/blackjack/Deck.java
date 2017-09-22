@@ -39,8 +39,6 @@ public class Deck {
         }
     }
 
-//    Consider moving these to dealer
-
     public Card getCardByIndex(int randomNum) {
         return this.deck.get(randomNum);
     }

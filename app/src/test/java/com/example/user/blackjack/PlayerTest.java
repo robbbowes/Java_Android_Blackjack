@@ -25,7 +25,7 @@ public class PlayerTest {
         player1 = new Player("Robb");
         player2 = new Player("Dave");
         deck = new Deck();
-        dealer = new Dealer(deck);
+        dealer = new Dealer(deck, numberGenerator);
         deck.createDeck();
         numberGenerator = new FixedNumberGenerator();
     }
@@ -97,6 +97,15 @@ public class PlayerTest {
         player1.addCardToHand(threeHearts);
         ArrayList<Card> player1Hand = player1.getHand();
         assertEquals( 0, player1.numOfAces(player1Hand));
+    }
+
+    @Test
+    public void aceCountsAs11And1() {
+        Card aceSpades = new Card(Suit.SPADES, Value.ACE);
+        Card aceClubs = new Card(Suit.CLUBS, Value.ACE);
+        player1.addCardToHand(aceSpades);
+        player1.addCardToHand(aceClubs);
+        assertEquals( 12, player1.getHandWorth());
     }
 
 

@@ -11,8 +11,9 @@ public class Dealer {
     Deck deck;
     NumberGenerating numberGenerator;
 
-    public Dealer(Deck deck) {
+    public Dealer(Deck deck, NumberGenerating numberGenerator) {
         this.deck = deck;
+        this.numberGenerator = numberGenerator;
     }
 
     public void dealCard(Player player) {

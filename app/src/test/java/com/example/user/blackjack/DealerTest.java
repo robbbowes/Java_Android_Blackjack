@@ -26,11 +26,13 @@ public class DealerTest {
     public void before() {
 
         deck = new Deck();
+        deck.createDeck();
         aceSpades = new Card(Suit.SPADES, Value.ACE);
         threeHearts = new Card(Suit.HEARTS, Value.THREE);
         twoClubs = new Card(Suit.CLUBS, Value.TWO);
         fixedNumberGenerator = new FixedNumberGenerator();
         player1 = new Player("Daniel");
+        dealer = new Dealer(deck, fixedNumberGenerator);
     }
 
     @Test

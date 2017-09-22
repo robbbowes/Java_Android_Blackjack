@@ -35,7 +35,7 @@ public class DeckTest {
         numberGenerator = new RandomNumberGenerator();
         fixedNumberGenerator = new FixedNumberGenerator();
         player1 = new Player("Danny");
-        dealer = new Dealer(deck);
+        dealer = new Dealer(deck, fixedNumberGenerator);
     }
 
     @Test
@@ -84,15 +84,7 @@ public class DeckTest {
         Card card = deck.removeCardAtRandom(numberGenerator);
         player1.addCardToHand(card);
         assertEquals(51, deck.getSize());
-
     }
-
-    @Test
-    public void dealerCanDealACard() {
-        dealer.dealCard(player1);
-        assertEquals( 1, player1.getHand().size() );
-    }
-
 
 }
 
