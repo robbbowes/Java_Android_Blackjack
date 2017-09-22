@@ -1,5 +1,7 @@
 package com.example.user.blackjack;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,6 +23,7 @@ public class DeckTest {
     RandomNumberGenerator numberGenerator;
     FixedNumberGenerator fixedNumberGenerator;
     Player player1;
+    Dealer dealer;
 
     @Before
     public void before() {
@@ -32,6 +35,7 @@ public class DeckTest {
         numberGenerator = new RandomNumberGenerator();
         fixedNumberGenerator = new FixedNumberGenerator();
         player1 = new Player("Danny");
+        dealer = new Dealer(deck);
     }
 
     @Test
@@ -81,6 +85,12 @@ public class DeckTest {
         player1.addCardToHand(card);
         assertEquals(51, deck.getSize());
 
+    }
+
+    @Test
+    public void dealerCanDealACard() {
+        dealer.dealCard(player1);
+        assertEquals( 1, player1.getHand().size() );
     }
 
 

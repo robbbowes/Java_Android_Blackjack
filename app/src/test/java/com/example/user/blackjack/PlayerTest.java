@@ -23,11 +23,16 @@ public class PlayerTest {
     public void before() {
 
         player1 = new Player("Robb");
-        player1 = new Player("Dave");
+        player2 = new Player("Dave");
         deck = new Deck();
         dealer = new Dealer(deck);
         deck.createDeck();
         numberGenerator = new FixedNumberGenerator();
+    }
+
+    @Test
+    public void playerHasName() {
+        assertEquals( "Robb", player1.getName());
     }
 
     @Test

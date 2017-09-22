@@ -19,6 +19,7 @@ public class DealerTest {
     Dealer dealer;
     RandomNumberGenerator numberGenerator;
     FixedNumberGenerator fixedNumberGenerator;
+    Player player1;
 
 
     @Before
@@ -28,8 +29,14 @@ public class DealerTest {
         aceSpades = new Card(Suit.SPADES, Value.ACE);
         threeHearts = new Card(Suit.HEARTS, Value.THREE);
         twoClubs = new Card(Suit.CLUBS, Value.TWO);
-        numberGenerator = new RandomNumberGenerator();
         fixedNumberGenerator = new FixedNumberGenerator();
+        player1 = new Player("Daniel");
+    }
+
+    @Test
+    public void dealerCanDealACard() {
+        dealer.dealCard(player1);
+        assertEquals( 1, player1.getHand().size() );
     }
 
 }
