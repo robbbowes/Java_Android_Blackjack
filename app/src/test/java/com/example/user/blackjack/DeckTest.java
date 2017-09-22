@@ -20,6 +20,7 @@ public class DeckTest {
     Card twoClubs;
     RandomNumberGenerator numberGenerator;
     FixedNumberGenerator fixedNumberGenerator;
+    Player player1;
 
     @Before
     public void before() {
@@ -30,6 +31,7 @@ public class DeckTest {
         twoClubs = new Card(Suit.CLUBS, Value.TWO);
         numberGenerator = new RandomNumberGenerator();
         fixedNumberGenerator = new FixedNumberGenerator();
+        player1 = new Player("Danny");
     }
 
     @Test
@@ -70,6 +72,15 @@ public class DeckTest {
     public void randomCard() {
         deck.addCardToDeck(aceSpades);
         assertEquals( aceSpades, deck.removeCardAtRandom(numberGenerator));
+    }
+
+    @Test
+    public void deckGetsSmallerAfterCardIsDealt() {
+        deck.createDeck();
+        Card card = deck.removeCardAtRandom(numberGenerator);
+        player1.addCardToHand(card);
+        assertEquals(51, deck.getSize());
+
     }
 
 

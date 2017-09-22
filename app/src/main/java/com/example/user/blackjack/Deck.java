@@ -41,6 +41,7 @@ public class Deck {
     public Card removeCardAtRandom(NumberGenerating numberGenerator) {
         int randomIndex = numberGenerator.generateNumber(getSize());
         Card randomCard = getCardByIndex(randomIndex);
+        deck.remove(randomCard);
         return randomCard;
     }
 
