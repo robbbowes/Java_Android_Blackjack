@@ -1,6 +1,7 @@
 package com.example.user.blackjack;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by user on 22/09/2017.
@@ -21,8 +22,32 @@ public class Deck {
         deck.add(card);
     }
 
-    public void removeCardFromDeck(int randomNumber) {}
+    public void removeCard(Card card) {
+        deck.remove(card);
+    }
 
+    public int getSize() {
+        return deck.size();
+    }
 
+//    Consider moving these to dealer
 
+    public Card getCardByIndex(int randomNum) {
+        return this.deck.get(randomNum);
+    }
+
+    public Card removeCardAtRandom(NumberGenerating numberGenerator) {
+        int randomIndex = numberGenerator.generateNumber(getSize());
+        Card randomCard = getCardByIndex(randomIndex);
+        return randomCard;
+    }
+
+    public void createDeck() {
+        for (Suit suit : Suit.values()) {
+            for (Value value : Value.values()) {
+                Card card = new Card(suit, value);
+                deck.add(card);
+            }
+        }
+    }
 }
