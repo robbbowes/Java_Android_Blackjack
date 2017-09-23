@@ -23,7 +23,6 @@ public class DeckTest {
     RandomNumberGenerator numberGenerator;
     FixedNumberGenerator fixedNumberGenerator;
     Player player1;
-    Dealer dealer;
 
     @Before
     public void before() {
@@ -35,7 +34,6 @@ public class DeckTest {
         numberGenerator = new RandomNumberGenerator();
         fixedNumberGenerator = new FixedNumberGenerator();
         player1 = new Player("Danny", false);
-        dealer = new Dealer(deck, fixedNumberGenerator);
     }
 
     @Test

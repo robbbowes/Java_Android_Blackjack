@@ -16,7 +16,6 @@ public class PlayerTest {
     Player player1;
     Player player2;
     Deck deck;
-    Dealer dealer;
     NumberGenerating numberGenerator;
 
     @Before
@@ -25,7 +24,6 @@ public class PlayerTest {
         player1 = new Player("Robb", false);
         player2 = new Player("Dave", false);
         deck = new Deck();
-        dealer = new Dealer(deck, numberGenerator);
         deck.createDeck();
         numberGenerator = new FixedNumberGenerator();
     }
@@ -129,21 +127,6 @@ public class PlayerTest {
     }
 
     @Test
-    public void aceWillNotCountAsHighIfOver12() {
-        Card aceSpades = new Card(Suit.SPADES, Value.ACE);
-        Card aceClubs = new Card(Suit.CLUBS, Value.ACE);
-        Card aceDiamonds = new Card(Suit.DIAMONDS, Value.ACE);
-        Card kingDiamonds = new Card(Suit.DIAMONDS, Value.KING);
-        Card eightClubs = new Card(Suit.CLUBS, Value.EIGHT);
-        player1.addCardToHand(aceSpades);
-        player1.addCardToHand(aceClubs);
-        player1.addCardToHand(aceDiamonds);
-        player1.addCardToHand(kingDiamonds);
-        player1.addCardToHand(eightClubs);
-        assertEquals( 21, player1.getHandWorth() );
-    }
-
-    @Test
     public void playerIsBust() {
         Card kingDiamonds = new Card(Suit.DIAMONDS, Value.KING);
         Card kingClubs = new Card(Suit.CLUBS, Value.KING);
@@ -155,10 +138,7 @@ public class PlayerTest {
         assertEquals( player1.isBust(), true );
     }
 
-    @Test
-    public void dealerAlwaysWins() {
 
-    }
 
 
 

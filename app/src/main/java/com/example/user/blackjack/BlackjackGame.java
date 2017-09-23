@@ -9,17 +9,12 @@ import java.util.ArrayList;
 public class BlackjackGame implements CardGame {
 
     private ArrayList<Player> players;
-    private Dealer dealer;
     private Deck deck;
-    private NumberGenerating numberGenerator;
 
-    public BlackjackGame(ArrayList<Player> players, Dealer dealer, Deck deck, NumberGenerating numberGenerator) {
+    public BlackjackGame(ArrayList<Player> players, Deck deck) {
         this.players = players;
-        this.dealer = dealer;
         this.deck = deck;
-        this.numberGenerator = numberGenerator;
     }
-
 
     public ArrayList<Player> playersWithBlackjack() {
 
