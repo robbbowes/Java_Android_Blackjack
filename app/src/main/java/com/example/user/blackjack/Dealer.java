@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Dealer {
 
-    Deck deck;
-    NumberGenerating numberGenerator;
+    private Deck deck;
+    private NumberGenerating numberGenerator;
 
     public Dealer(Deck deck, NumberGenerating numberGenerator) {
         this.deck = deck;

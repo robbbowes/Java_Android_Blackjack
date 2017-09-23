@@ -7,32 +7,33 @@ import java.util.ArrayList;
  */
 
 public class Player {
-    String name;
-    ArrayList<Card> hand;
-    int handWorth;
-    boolean isDealer;
+    private String name;
+    private ArrayList<Card> hand;
+    private boolean isDealer;
 
-    public Player(String name, boolean isDealer) {
+    Player(String name, boolean isDealer) {
         this.name = name;
         hand = new ArrayList<>();
-        this.handWorth = 0;
         this.isDealer = isDealer;
-
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public ArrayList<Card> getHand() {
+    ArrayList<Card> getHand() {
         return hand;
     }
 
-    public void addCardToHand(Card card) {
+    boolean isDealer() {
+        return isDealer;
+    }
+
+    void addCardToHand(Card card) {
         hand.add(card);
     }
 
-    public int numOfAces(ArrayList<Card> hand) {
+    int numOfAces(ArrayList<Card> hand) {
         int aceCount = 0;
         for (Card card : hand ) {
             if (card.getValue() == Value.ACE) {
@@ -42,7 +43,7 @@ public class Player {
         return aceCount;
     }
 
-    public int getHandWorth() {
+    int getHandWorth() {
 
         int handWorth = 0;
         boolean aceCounter = false;
@@ -95,6 +96,17 @@ public class Player {
             return handWorth;
         }
     }
+
+    boolean isBust() {
+        if (getHandWorth() >= 22) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 
 
 

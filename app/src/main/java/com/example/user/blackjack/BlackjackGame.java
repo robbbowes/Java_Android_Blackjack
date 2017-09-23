@@ -6,12 +6,12 @@ import java.util.ArrayList;
  * Created by user on 23/09/2017.
  */
 
-public class BlackjackGame implements Winnable {
+public class BlackjackGame implements CardGame {
 
-    ArrayList<Player> players;
-    Dealer dealer;
-    Deck deck;
-    NumberGenerating numberGenerator;
+    private ArrayList<Player> players;
+    private Dealer dealer;
+    private Deck deck;
+    private NumberGenerating numberGenerator;
 
     public BlackjackGame(ArrayList<Player> players, Dealer dealer, Deck deck, NumberGenerating numberGenerator) {
         this.players = players;
@@ -20,9 +20,10 @@ public class BlackjackGame implements Winnable {
         this.numberGenerator = numberGenerator;
     }
 
+
     public ArrayList<Player> playersWithBlackjack() {
 
-        ArrayList blackjackArray = new ArrayList<Player>();
+        ArrayList blackjackArray = new ArrayList<>();
 
         for ( Player player : players ) {
             if ( ( player.getHandWorth() == 21 ) && ( player.getHand().size() == 2 )) {
@@ -37,7 +38,7 @@ public class BlackjackGame implements Winnable {
         boolean dealerWins = false;
 
         for (Player player : players ) {
-            if (player.isDealer == true) {
+            if (player.isDealer()) {
                 dealerWins = true;
             }
             else {
@@ -47,16 +48,19 @@ public class BlackjackGame implements Winnable {
         return dealerWins;
     }
 
-//    public
+    public Player winner() {
 
+        Player winner = players.get(0);
 
-
-
-
-
-    public void hasWinner() {
-//        for (Player player : players ) {
-//            if (player.hasBlackjack() == true) {
-//        }
+        for (Player player : players) {
+            if ( (player.getHandWorth() > winner.getHandWorth() ) && !player.isBust() ) {
+                winner = player;
+            }
+            else if ( player.isDealer() && player.getHandWorth() == winner.getHandWorth() && !player.isBust()){
+                winner = player;
+            }
+        }
+        return winner;
     }
+
 }

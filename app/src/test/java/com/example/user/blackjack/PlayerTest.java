@@ -143,6 +143,23 @@ public class PlayerTest {
         assertEquals( 21, player1.getHandWorth() );
     }
 
+    @Test
+    public void playerIsBust() {
+        Card kingDiamonds = new Card(Suit.DIAMONDS, Value.KING);
+        Card kingClubs = new Card(Suit.CLUBS, Value.KING);
+        Card kingHearts = new Card(Suit.HEARTS, Value.KING);
+        player1.addCardToHand(kingDiamonds);
+        player1.addCardToHand(kingClubs);
+        player1.addCardToHand(kingHearts);
+        assertEquals( player1.getHandWorth(), 30 );
+        assertEquals( player1.isBust(), true );
+    }
+
+    @Test
+    public void dealerAlwaysWins() {
+
+    }
+
 
 
 

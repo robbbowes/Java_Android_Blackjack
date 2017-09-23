@@ -12,7 +12,5 @@ public class FixedNumberGenerator implements NumberGenerating {
         }else{
             return num - 1;
         }
-
     }
-
 }
