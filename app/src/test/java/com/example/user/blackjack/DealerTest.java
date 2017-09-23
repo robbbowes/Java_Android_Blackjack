@@ -31,7 +31,7 @@ public class DealerTest {
         threeHearts = new Card(Suit.HEARTS, Value.THREE);
         twoClubs = new Card(Suit.CLUBS, Value.TWO);
         fixedNumberGenerator = new FixedNumberGenerator();
-        player1 = new Player("Daniel");
+        player1 = new Player("Daniel", false);
         dealer = new Dealer(deck, fixedNumberGenerator);
     }
 

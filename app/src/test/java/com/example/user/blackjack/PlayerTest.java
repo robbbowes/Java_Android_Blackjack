@@ -22,8 +22,8 @@ public class PlayerTest {
     @Before
     public void before() {
 
-        player1 = new Player("Robb");
-        player2 = new Player("Dave");
+        player1 = new Player("Robb", false);
+        player2 = new Player("Dave", false);
         deck = new Deck();
         dealer = new Dealer(deck, numberGenerator);
         deck.createDeck();
@@ -107,6 +107,43 @@ public class PlayerTest {
         player1.addCardToHand(aceClubs);
         assertEquals( 12, player1.getHandWorth());
     }
+
+    @Test
+    public void singleAceCountsAs11() {
+        Card aceSpades = new Card(Suit.SPADES, Value.ACE);
+        player1.addCardToHand(aceSpades);
+        assertEquals( 11, player1.getHandWorth());
+    }
+
+    @Test
+    public void fourAcesCountAs14() {
+        Card aceSpades = new Card(Suit.SPADES, Value.ACE);
+        Card aceClubs = new Card(Suit.CLUBS, Value.ACE);
+        Card aceDiamonds = new Card(Suit.DIAMONDS, Value.ACE);
+        Card aceHearts = new Card(Suit.HEARTS, Value.ACE);
+        player1.addCardToHand(aceSpades);
+        player1.addCardToHand(aceClubs);
+        player1.addCardToHand(aceDiamonds);
+        player1.addCardToHand(aceHearts);
+        assertEquals( 14, player1.getHandWorth());
+    }
+
+    @Test
+    public void aceWillNotCountAsHighIfOver12() {
+        Card aceSpades = new Card(Suit.SPADES, Value.ACE);
+        Card aceClubs = new Card(Suit.CLUBS, Value.ACE);
+        Card aceDiamonds = new Card(Suit.DIAMONDS, Value.ACE);
+        Card kingDiamonds = new Card(Suit.DIAMONDS, Value.KING);
+        Card eightClubs = new Card(Suit.CLUBS, Value.EIGHT);
+        player1.addCardToHand(aceSpades);
+        player1.addCardToHand(aceClubs);
+        player1.addCardToHand(aceDiamonds);
+        player1.addCardToHand(kingDiamonds);
+        player1.addCardToHand(eightClubs);
+        assertEquals( 21, player1.getHandWorth() );
+    }
+
+
 
 
 

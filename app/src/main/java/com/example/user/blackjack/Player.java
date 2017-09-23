@@ -10,11 +10,14 @@ public class Player {
     String name;
     ArrayList<Card> hand;
     int handWorth;
+    boolean isDealer;
 
-    public Player(String name) {
+    public Player(String name, boolean isDealer) {
         this.name = name;
         hand = new ArrayList<>();
         this.handWorth = 0;
+        this.isDealer = isDealer;
+
     }
 
     public String getName() {
@@ -40,54 +43,58 @@ public class Player {
     }
 
     public int getHandWorth() {
-        int aceTripper = 0;
+
+        int handWorth = 0;
+        boolean aceCounter = false;
+
         for (Card card : hand) {
             if (card.getValue() == Value.TWO) {
                 handWorth += 2;
-                aceTripper += 2;
             }
             if (card.getValue() == Value.THREE) {
                 handWorth += 3;
-                aceTripper += 3;
             }
             if (card.getValue() == Value.FOUR) {
                 handWorth += 4;
-                aceTripper += 4;
             }
             if (card.getValue() == Value.FIVE) {
                 handWorth += 5;
-                aceTripper += 5;
             }
             if (card.getValue() == Value.SIX) {
                 handWorth += 6;
-                aceTripper += 6;
             }
             if (card.getValue() == Value.SEVEN) {
                 handWorth += 7;
-                aceTripper += 7;
             }
             if (card.getValue() == Value.EIGHT) {
                 handWorth += 8;
-                aceTripper += 8;
             }
             if (card.getValue() == Value.NINE) {
                 handWorth += 9;
-                aceTripper += 9;
             }
-            if (card.getValue() == Value.ACE ) {
-                if (aceTripper <= 11) {
-                    handWorth += 11;
-                }
-                else {
-                    handWorth += 1;
-                }
-            } else {
+            if (card.getValue() == Value.TEN) {
                 handWorth += 10;
             }
+            if (card.getValue() == Value.JACK) {
+                handWorth += 10;
+            }
+            if (card.getValue() == Value.QUEEN) {
+                handWorth += 10;
+            }
+            if (card.getValue() == Value.KING) {
+                handWorth += 10;
+            }
+            if (card.getValue() == Value.ACE) {
+                handWorth++;
+                aceCounter = true;
+            }
         }
-        return handWorth;
+        if (aceCounter && ((handWorth + 10) < 22) ) {
+            return handWorth + 10;
+        } else {
+            return handWorth;
+        }
     }
-
 
 
 

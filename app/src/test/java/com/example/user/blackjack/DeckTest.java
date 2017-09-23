@@ -34,7 +34,7 @@ public class DeckTest {
         twoClubs = new Card(Suit.CLUBS, Value.TWO);
         numberGenerator = new RandomNumberGenerator();
         fixedNumberGenerator = new FixedNumberGenerator();
-        player1 = new Player("Danny");
+        player1 = new Player("Danny", false);
         dealer = new Dealer(deck, fixedNumberGenerator);
     }
 
