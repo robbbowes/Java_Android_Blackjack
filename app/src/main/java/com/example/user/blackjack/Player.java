@@ -9,24 +9,32 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private ArrayList<Card> hand;
-    private boolean isDealer;
+    boolean isDealer;
+    boolean winner;
+    private boolean blackjack;
 
     Player(String name, boolean isDealer) {
         this.name = name;
         hand = new ArrayList<>();
         this.isDealer = isDealer;
+        this.winner = false;
+        this.blackjack = false;
     }
 
     String getName() {
         return name;
     }
 
-    ArrayList<Card> getHand() {
-        return hand;
+    public void setBlackjack(boolean blackjack) {
+        this.blackjack = blackjack;
     }
 
-    boolean isDealer() {
-        return isDealer;
+    public boolean isBlackjack() {
+        return blackjack;
+    }
+
+    ArrayList<Card> getHand() {
+        return hand;
     }
 
     void addCardToHand(Card card) {

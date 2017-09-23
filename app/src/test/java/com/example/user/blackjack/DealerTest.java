@@ -1,12 +1,7 @@
 package com.example.user.blackjack;
 
-import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,9 +9,9 @@ import static org.junit.Assert.assertEquals;
  * Created by user on 22/09/2017.
  */
 
-public class DeckTest {
+public class DealerTest {
 
-    Deck deck;
+    Dealer dealer;
     Card threeHearts;
     Card aceSpades;
     Card twoClubs;
@@ -27,7 +22,7 @@ public class DeckTest {
     @Before
     public void before() {
 
-        deck = new Deck();
+        dealer = new Dealer();
         aceSpades = new Card(Suit.SPADES, Value.ACE);
         threeHearts = new Card(Suit.HEARTS, Value.THREE);
         twoClubs = new Card(Suit.CLUBS, Value.TWO);
@@ -38,50 +33,50 @@ public class DeckTest {
 
     @Test
     public void deckStartsEmpty() {
-        assertEquals(0, deck.getSize());
+        assertEquals(0, dealer.getSize());
     }
 
     @Test
     public void canAddCard() {
-        deck.addCardToDeck(threeHearts);
-        assertEquals(1, deck.getDeck().size());
+        dealer.addCardToDeck(threeHearts);
+        assertEquals(1, dealer.getDeck().size());
     }
 
     @Test
     public void canRemoveCard() {
-        deck.addCardToDeck(threeHearts);
-        deck.addCardToDeck(aceSpades);
-        assertEquals(deck.getDeck().size(), 2 );
-        deck.removeCard(threeHearts);
-        assertEquals(deck.getDeck().size(), 1);
+        dealer.addCardToDeck(threeHearts);
+        dealer.addCardToDeck(aceSpades);
+        assertEquals(dealer.getDeck().size(), 2 );
+        dealer.removeCard(threeHearts);
+        assertEquals(dealer.getDeck().size(), 1);
     }
 
     @Test
     public void notRandomCard() {
-        deck.addCardToDeck(threeHearts);
-        deck.addCardToDeck(twoClubs);
-        deck.addCardToDeck(aceSpades);
-        assertEquals( aceSpades, deck.removeCardAtRandom(fixedNumberGenerator));
+        dealer.addCardToDeck(threeHearts);
+        dealer.addCardToDeck(twoClubs);
+        dealer.addCardToDeck(aceSpades);
+        assertEquals( aceSpades, dealer.removeCardAtRandom(fixedNumberGenerator));
     }
 
     @Test
     public void deckHas52cards() {
-        deck.createDeck();
-        assertEquals( 52, deck.getDeck().size());
+        dealer.createDeck();
+        assertEquals( 52, dealer.getDeck().size());
     }
 
     @Test
     public void randomCard() {
-        deck.addCardToDeck(aceSpades);
-        assertEquals( aceSpades, deck.removeCardAtRandom(numberGenerator));
+        dealer.addCardToDeck(aceSpades);
+        assertEquals( aceSpades, dealer.removeCardAtRandom(numberGenerator));
     }
 
     @Test
     public void deckGetsSmallerAfterCardIsDealt() {
-        deck.createDeck();
-        Card card = deck.removeCardAtRandom(numberGenerator);
+        dealer.createDeck();
+        Card card = dealer.removeCardAtRandom(numberGenerator);
         player1.addCardToHand(card);
-        assertEquals(51, deck.getSize());
+        assertEquals(51, dealer.getSize());
     }
 
 }

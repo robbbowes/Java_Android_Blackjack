@@ -15,7 +15,7 @@ public class PlayerTest {
 
     Player player1;
     Player player2;
-    Deck deck;
+    Dealer dealer;
     NumberGenerating numberGenerator;
 
     @Before
@@ -23,8 +23,8 @@ public class PlayerTest {
 
         player1 = new Player("Robb", false);
         player2 = new Player("Dave", false);
-        deck = new Deck();
-        deck.createDeck();
+        dealer = new Dealer();
+        dealer.createDeck();
         numberGenerator = new FixedNumberGenerator();
     }
 
@@ -40,15 +40,15 @@ public class PlayerTest {
 
     @Test
     public void playerHasCards() {
-        assertEquals( 52, deck.getSize() );
-        Card card = deck.removeCardAtRandom(numberGenerator);
+        assertEquals( 52, dealer.getSize() );
+        Card card = dealer.removeCardAtRandom(numberGenerator);
         player1.addCardToHand(card);
         assertEquals( 1, player1.getHand().size() );
     }
 
     @Test
     public void playerHasCard() {
-        Card card = deck.removeCardAtRandom(numberGenerator);
+        Card card = dealer.removeCardAtRandom(numberGenerator);
         player1.addCardToHand(card);
         assertEquals( Suit.CLUBS, player1.getHand().get(0).getSuit() );
         assertEquals( Value.ACE, player1.getHand().get(0).getValue() );
@@ -56,8 +56,8 @@ public class PlayerTest {
 
     @Test
     public void getTwoCards() {
-        Card card1 = deck.removeCardAtRandom(numberGenerator);
-        Card card2 = deck.removeCardAtRandom(numberGenerator);
+        Card card1 = dealer.removeCardAtRandom(numberGenerator);
+        Card card2 = dealer.removeCardAtRandom(numberGenerator);
         player1.addCardToHand(card1);
         player1.addCardToHand(card2);
 
@@ -70,8 +70,8 @@ public class PlayerTest {
 
     @Test
     public void canCalculateHand() {
-        Card card1 = deck.removeCardAtRandom(numberGenerator);
-        Card card2 = deck.removeCardAtRandom(numberGenerator);
+        Card card1 = dealer.removeCardAtRandom(numberGenerator);
+        Card card2 = dealer.removeCardAtRandom(numberGenerator);
         player1.addCardToHand(card1);
         player1.addCardToHand(card2);
         assertEquals( 21, player1.getHandWorth());

@@ -6,10 +6,10 @@ import java.util.ArrayList;
  * Created by user on 22/09/2017.
  */
 
-public class Deck {
+public class Dealer {
     private ArrayList<Card> deck;
 
-    Deck() {
+    Dealer() {
         this.deck = new ArrayList<>();
     }
 
@@ -38,7 +38,7 @@ public class Deck {
         }
     }
 
-    private Card getCardByIndex(int randomNum) {
+    Card getCardByIndex(int randomNum) {
         return this.deck.get(randomNum);
     }
 
