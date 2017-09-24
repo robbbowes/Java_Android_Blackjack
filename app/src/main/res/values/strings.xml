@@ -2,5 +2,5 @@
     <string name="app_name">Blackjack</string>
     <string name="stick_button">Stick</string>
     <string name="twist_button">Twist</string>
-    <string name="player_score">Your score:</string>
+    <string name="player_score">Your score: </string>
 </resources>

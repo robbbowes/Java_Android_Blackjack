@@ -11,11 +11,14 @@ public class BlackjackGame {
     Player player;
     Player dealerPlayer;
     Dealer dealer;
+    RandomNumberGenerator randomNumberGenerator;
 
-    public BlackjackGame(Player player, Player dealerPlayer, Dealer dealer) {
-        this.player = player;
-        this.dealerPlayer = dealerPlayer;
-        this.dealer = dealer;
+    public BlackjackGame() {
+        this.player = new Player("Bruno", true);
+        this.dealerPlayer = new Player("Nicky", false);
+        this.dealer = new Dealer();
+        dealer.createDeck();
+        this.randomNumberGenerator = new RandomNumberGenerator();
     }
 
     public void playerBlackjack(Player player) {
@@ -32,7 +35,41 @@ public class BlackjackGame {
         }
     }
 
+    public void dealToBoth() {
+        Card firstPlayerCard = dealer.removeCardAtRandom(randomNumberGenerator);
+        player.addCardToHand(firstPlayerCard);
+
+        Card firstDealerCard = dealer.removeCardAtRandom(randomNumberGenerator);
+        dealerPlayer.addCardToHand(firstDealerCard);
+
+        Card secondPlayerCard = dealer.removeCardAtRandom(randomNumberGenerator);
+        player.addCardToHand(secondPlayerCard);
+
+        Card secondDealerCard = dealer.removeCardAtRandom(randomNumberGenerator);
+        dealerPlayer.addCardToHand(secondDealerCard);
+    }
+
+    public void dealACardToPlayer() {
+        Card additionalCard = dealer.removeCardAtRandom(randomNumberGenerator);
+        System.out.println(additionalCard.toString());
+        player.addCardToHand(additionalCard);
+    }
+
+    public void dealACardToDealerPlayer() {
+        Card additionalCard = dealer.removeCardAtRandom(randomNumberGenerator);
+        dealerPlayer.addCardToHand(additionalCard);
+    }
+
+    public void dealerHasLessTHan17() {
+        if (dealerPlayer.getHandWorth() < 17) {
+             dealACardToDealerPlayer();
+        }
+    }
+
     public Player decideWinner(Player player, Player dealerPlayer) {
+        dealerHasLessTHan17();
+        dealerHasLessTHan17();
+        dealerHasLessTHan17();
         if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
             return player;
         }
@@ -47,19 +84,46 @@ public class BlackjackGame {
         }
     }
 
-//    public Player winner() {
-//
-//        Player winner = players.get(0);
-//
-//        for (Player player : players) {
-//            if ( (player.getHandWorth() > winner.getHandWorth() ) && !player.isBust() ) {
-//                winner = player;
-//            }
-//            else if ( player.isDealer() && player.getHandWorth() == winner.getHandWorth() && !player.isBust()){
-//                winner = player;
-//            }
+
+
+
+
+//    boolean didTheDealerWin() {
+//        if (dealerPlayer.getHandWorth() >= player.getHandWorth() ) {
+//            return true;
+//        } else if ( dealerPlayer.isBlackjack() ) {
+//            return true;
+//        } else if ( !dealerPlayer.isBust() && player.isBust() ) {
+//            return true;
+//        } else {
+//            return false;
 //        }
-//        return winner;
+//    }
+
+//    boolean didTheDealerWin() {
+//        if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
+//            return false;
+//        }
+//        else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
+//            return false;
+//        }
+//        else if( !player.isBust() && dealerPlayer.isBust() ) {
+//            return false;
+//        }
+//        else {
+//            return true;
+//        }
+//    }
+
+//    String getResult() {
+//        dealerHasLessTHan17();
+//        dealerHasLessTHan17();
+//        dealerHasLessTHan17();
+//        if (didTheDealerWin() != false) {
+//            return "The dealer always wins!";
+//        } else {
+//            return "You managed to win!";
+//        }
 //    }
 
 }

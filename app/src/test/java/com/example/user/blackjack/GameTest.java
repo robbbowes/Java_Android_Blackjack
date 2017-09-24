@@ -17,18 +17,17 @@ public class GameTest {
     Player dealerPlayer;
     Dealer dealer;
     NumberGenerating numberGenerator;
-    ArrayList<Player> blackjackPlayers;
     BlackjackGame blackjackGame;
 
     @Before
     public void before() {
 
-        player = new Player("Robb", false);
+        player = new Player("Player 1", false);
         dealerPlayer = new Player("Dealer", true);
         numberGenerator = new FixedNumberGenerator();
         dealer = new Dealer();
         dealer.createDeck();
-        blackjackGame = new BlackjackGame(player, dealerPlayer, dealer);
+        blackjackGame = new BlackjackGame();
     }
 
     @Test
@@ -131,5 +130,36 @@ public class GameTest {
         assertEquals( false, dealerPlayer.isBlackjack());
         Player winner = blackjackGame.decideWinner(dealerPlayer, player);
         assertEquals( winner, dealerPlayer);
+    }
+
+//    @Test
+//    public void dealerCannotHaveLessThan17() {
+//        Card threeDiamonds = new Card(Suit.DIAMONDS, Value.THREE);
+//        Card fourClubs = new Card(Suit.CLUBS, Value.FOUR);
+//        Card kingHearts = new Card(Suit.HEARTS, Value.KING);
+//        Card eightSpades = new Card(Suit.SPADES, Value.EIGHT);
+//        dealerPlayer.addCardToHand(threeDiamonds);
+//        dealerPlayer.addCardToHand(fourClubs);
+//        player.addCardToHand(kingHearts);
+//        player.addCardToHand(eightSpades);
+//        assertEquals( dealerPlayer.getHandWorth(), 7);
+//        blackjackGame.decideWinner(player, dealerPlayer);
+//        assertEquals( 17, dealerPlayer.getHandWorth());
+//    }
+
+    @Test
+    public void dealToBothWorks() {
+        blackjackGame.dealToBoth();
+        assertEquals( 2, blackjackGame.player.getHand().size() );
+        assertEquals( 2, blackjackGame.dealerPlayer.getHand().size() );
+    }
+
+    @Test
+    public void dealToPlayerWork() {
+        blackjackGame.dealToBoth();
+        assertEquals( 2, blackjackGame.player.getHand().size() );
+        assertEquals( 2, blackjackGame.dealerPlayer.getHand().size() );
+        blackjackGame.dealACardToPlayer();
+        assertEquals( 3, blackjackGame.player.getHand().size());
     }
 }
