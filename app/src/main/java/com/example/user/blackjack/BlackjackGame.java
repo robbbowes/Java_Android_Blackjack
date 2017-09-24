@@ -51,7 +51,7 @@ public class BlackjackGame {
 
     public void dealACardToPlayer() {
         Card additionalCard = dealer.removeCardAtRandom(randomNumberGenerator);
-        System.out.println(additionalCard.toString());
+        System.out.println(additionalCard.getValue());
         player.addCardToHand(additionalCard);
     }
 

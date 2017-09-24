@@ -37,17 +37,7 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
 
         playerScore = (TextView) findViewById((R.id.player_score));
         playerScore.setText(playerscore);
-
-//        String userInput = userInputEditText.getText().toString();
-//        int numberOfWords = Counter.countWords(userInput);
-//        String numberOfWordsAsStringNotAnIntButAStringDotDotDot = Integer.toString(numberOfWords);
-//
-//        resultText.setText(numberOfWordsAsStringNotAnIntButAStringDotDotDot);
-
     }
-
-//    public
-
 
     public void onClickTwist(View button) {
 
@@ -61,29 +51,7 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         playerScore = (TextView) findViewById((R.id.player_score));
         playerScore.setText(playerscore);
 
-//        String playerScore = userInputEditText.getText().toString();
-//        int numberOfWords = Counter.countWords(userInput);
-//        String numberOfWordsAsStringNotAnIntButAStringDotDotDot = Integer.toString(numberOfWords);
-//
-//
     }
-//
-//    public void onCountButtonClicked(View button) {
-//        String userInput = userInputEditText.getText().toString();
-//        int numberOfWords = Counter.countWords(userInput);
-//        String numberOfWordsAsStringNotAnIntButAStringDotDotDot = Integer.toString(numberOfWords);
-//
-//        resultText.setText(numberOfWordsAsStringNotAnIntButAStringDotDotDot);
-//    }
-
-//    public void onClickScissors(View button) {3
-//        Intent intent = new Intent(this, ResultActivity.class);
-//        rockPaperScissors.setPlayerHand(HandType.SCISSORS);
-//        String result = rockPaperScissors.compareHands();
-//        intent.putExtra("result", result);
-//        startActivity(intent);
-//        Toast.makeText(this, "You chose Scissors!", Toast.LENGTH_SHORT).show();
-//    }
 
 
 
