@@ -21,14 +21,18 @@ public class BlackjackGame {
     Player player;
     Player dealerPlayer;
     Dealer dealer;
-    RandomNumberGenerator randomNumberGenerator;
+    NumberGenerating randomNumberGenerator;
 
-    public BlackjackGame() {
+    public BlackjackGame(NumberGenerating numberGenerator) {
         this.player = new Player("Bruno", true);
         this.dealerPlayer = new Player("Nicky", false);
         this.dealer = new Dealer();
         dealer.createDeck();
-        this.randomNumberGenerator = new RandomNumberGenerator();
+        this.randomNumberGenerator = numberGenerator;
+    }
+
+    public BlackjackGame() {
+        this( new RandomNumberGenerator() );
     }
 
 
@@ -69,6 +73,36 @@ public class BlackjackGame {
              System.out.println("Dealing card to player" + dealerPlayer.getHandWorth());
              System.out.println("Dealing less than 17 inside " + dealerPlayer.getHand().size());
              dealACardToDealerPlayer();
+        }
+    }
+
+
+    public void dealerBlackjack() {
+
+        if ( ( dealerPlayer.getHandWorth() == 21 ) && ( dealerPlayer.getHand().size() == 2 )) {
+            dealerPlayer.setBlackjack(true);
+        }
+    }
+
+    public void playerBlackjack() {
+
+        if ( ( player.getHandWorth() == 21 ) && ( player.getHand().size() == 2 )) {
+            player.setBlackjack(true);
+        }
+    }
+
+    public Player decideWinner() {
+        if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
+            return player;
+        }
+        else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
+            return player;
+        }
+        else if( !player.isBust() && dealerPlayer.isBust() ) {
+            return player;
+        }
+        else {
+            return dealerPlayer;
         }
     }
 
