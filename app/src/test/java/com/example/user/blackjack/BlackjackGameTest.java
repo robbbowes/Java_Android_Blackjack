@@ -40,7 +40,7 @@ public class BlackjackGameTest {
         blackjackGame.dealACardToPlayer();
         assertEquals( 3, blackjackGame.player.getHand().size());
     }
-//
+
     @Test
     public void dealerCannotHaveLessThan17() {
         Card threeDiamonds = new Card(Suit.DIAMONDS, Value.THREE);
@@ -52,9 +52,9 @@ public class BlackjackGameTest {
         blackjackGame.player.addCardToHand(kingHearts);
         blackjackGame.player.addCardToHand(eightSpades);
         assertEquals( blackjackGame.dealerPlayer.getHandWorth(), 7);
-        blackjackGame.dealerHasLessThan17();
+        blackjackGame.dealerWhileUnder17();
         //fixed dealer will be dealing an ace(Top card)
-        assertEquals( 18, blackjackGame.dealerPlayer.getHandWorth());
+        assertEquals( 18, blackjackGame.player.getHandWorth());
     }
 
     @Test

@@ -24,8 +24,8 @@ public class BlackjackGame {
     NumberGenerating randomNumberGenerator;
 
     public BlackjackGame(NumberGenerating numberGenerator) {
-        this.player = new Player("Bruno", true);
-        this.dealerPlayer = new Player("Nicky", false);
+        this.dealerPlayer = new Player("Dealer", true);
+        this.player = new Player("Player", false);
         this.dealer = new Dealer();
         dealer.createDeck();
         this.randomNumberGenerator = numberGenerator;
@@ -50,32 +50,29 @@ public class BlackjackGame {
         dealerPlayer.addCardToHand(secondDealerCard);
     }
 
-    public void dealACardToPlayer() {
+    public Card dealACardToPlayer() {
         Card additionalCard = dealer.removeCardAtRandom(randomNumberGenerator);
-        System.out.println(additionalCard.getValue());
         player.addCardToHand(additionalCard);
+        return additionalCard;
     }
 
-    public void dealACardToDealerPlayer() {
+    public Card dealACardToDealerPlayer() {
         Card additionalCard = dealer.removeCardAtRandom(randomNumberGenerator);
-        System.out.println("Dealing card to dealer player" + additionalCard.getValue());
-        System.out.println("Dealing card to dealer player size before" + dealerPlayer.getHand().size());
         dealerPlayer.addCardToHand(additionalCard);
-        System.out.println("Dealing card to dealer player size" + dealerPlayer.getHand().size());
-        System.out.println("Dealing card to dealer player worth" + dealerPlayer.getHandWorth());
-
+        return additionalCard;
     }
 
-    public void dealerHasLessThan17() {
-        System.out.println("Checking if should deal card");
-        System.out.println("Dealing less than 17 " + dealerPlayer.getHand().size());
-        if (dealerPlayer.getHandWorth() < 17) {
-             System.out.println("Dealing card to player" + dealerPlayer.getHandWorth());
-             System.out.println("Dealing less than 17 inside " + dealerPlayer.getHand().size());
-             dealACardToDealerPlayer();
-        }
-    }
+//    public void dealerHasLessThan17() {
+//        if (dealerPlayer.getHandWorth() < 17) {
+//             dealACardToDealerPlayer();
+//        }
+//    }
 
+    public void dealerWhileUnder17() {
+        do {
+            dealACardToDealerPlayer();
+        } while (dealerPlayer.getHandWorth() < 17 );
+    }
 
     public void dealerBlackjack() {
 
@@ -92,19 +89,32 @@ public class BlackjackGame {
     }
 
     public Player decideWinner() {
+        dealerWhileUnder17();
         if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
+            Log.d("outcome", "player blackjack dealer not");
             return player;
         }
         else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
+            Log.d("outcome","player > dealer / player not bust");
             return player;
         }
         else if( !player.isBust() && dealerPlayer.isBust() ) {
+            Log.d("outcome", "player not bust / dealer is");
             return player;
         }
         else {
+            Log.d("outcome", "Other (dealerwin)");
             return dealerPlayer;
         }
     }
+
+
+
+//    public String displayWinner() {
+//        if ( decideWinner() == player ) {
+//            return ""
+//        }
+//    }
 
 
 //    public void dealerBlackjack(Player dealerPlayer) {
