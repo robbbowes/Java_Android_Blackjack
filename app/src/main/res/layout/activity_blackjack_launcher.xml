@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:startColor="#f0000000"
+    android:endColor="#ff444444"
     tools:context="com.example.user.blackjack.BlackjackLauncherActivity">
 
     <ImageView
