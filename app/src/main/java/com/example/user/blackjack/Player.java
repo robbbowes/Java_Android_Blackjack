@@ -1,6 +1,7 @@
 package com.example.user.blackjack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by user on 22/09/2017.
@@ -57,50 +58,29 @@ public class Player {
 
     int getHandWorth() {
 
+        HashMap<Value, Integer> values = new HashMap<Value, Integer>();
+        values.put(Value.TWO, 2);
+        values.put(Value.THREE, 3);
+        values.put(Value.FOUR, 4);
+        values.put(Value.FIVE, 5);
+        values.put(Value.SIX, 6);
+        values.put(Value.SEVEN, 7);
+        values.put(Value.EIGHT, 8);
+        values.put(Value.NINE, 9);
+        values.put(Value.TEN, 10);
+        values.put(Value.JACK, 10);
+        values.put(Value.QUEEN, 10);
+        values.put(Value.KING, 10);
+        values.put(Value.ACE, 1);
+
         int handWorth = 0;
         boolean aceCounter = false;
 
         for (Card card : hand) {
-            if (card.getValue() == Value.TWO) {
-                handWorth += 2;
-            }
-            if (card.getValue() == Value.THREE) {
-                handWorth += 3;
-            }
-            if (card.getValue() == Value.FOUR) {
-                handWorth += 4;
-            }
-            if (card.getValue() == Value.FIVE) {
-                handWorth += 5;
-            }
-            if (card.getValue() == Value.SIX) {
-                handWorth += 6;
-            }
-            if (card.getValue() == Value.SEVEN) {
-                handWorth += 7;
-            }
-            if (card.getValue() == Value.EIGHT) {
-                handWorth += 8;
-            }
-            if (card.getValue() == Value.NINE) {
-                handWorth += 9;
-            }
-            if (card.getValue() == Value.TEN) {
-                handWorth += 10;
-            }
-            if (card.getValue() == Value.JACK) {
-                handWorth += 10;
-            }
-            if (card.getValue() == Value.QUEEN) {
-                handWorth += 10;
-            }
-            if (card.getValue() == Value.KING) {
-                handWorth += 10;
-            }
-            if (card.getValue() == Value.ACE) {
-                handWorth++;
+            if(card.getValue() == Value.ACE){
                 aceCounter = true;
             }
+            handWorth += values.get(card.getValue());
         }
         if (aceCounter && ((handWorth + 10) < 22) ) {
             return handWorth + 10;

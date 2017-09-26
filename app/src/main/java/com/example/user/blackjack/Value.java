@@ -5,6 +5,7 @@ package com.example.user.blackjack;
  */
 
 public enum Value {
+
     TWO,
     THREE,
     FOUR,
@@ -17,5 +18,8 @@ public enum Value {
     JACK,
     QUEEN,
     KING,
-    ACE
+    ACE;
+
+
 }
+
