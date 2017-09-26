@@ -84,8 +84,8 @@ public class BlackjackGameTest {
         blackjackGame.dealerPlayer.addCardToHand(eightSpades);
         assertEquals(  blackjackGame.player.getHandWorth(), 18 );
         assertEquals(  blackjackGame.dealerPlayer.getHandWorth(), 18 );
-        Player winner = blackjackGame.decideWinner();
-        assertEquals( winner, blackjackGame.dealerPlayer );
+        blackjackGame.decideWinnerString();
+        assertEquals( true, blackjackGame.dealerPlayer.winner );
     }
 
     @Test
@@ -101,8 +101,8 @@ public class BlackjackGameTest {
         blackjackGame.playerBlackjack();
         blackjackGame.dealerBlackjack();
         assertEquals( true, blackjackGame.player.isBlackjack() );
-        Player winner = blackjackGame.decideWinner();
-        assertEquals( winner, blackjackGame.player);
+        blackjackGame.decideWinnerString();
+        assertEquals( true, blackjackGame.player.winner);
     }
     //
     @Test
@@ -119,8 +119,8 @@ public class BlackjackGameTest {
         blackjackGame.dealerBlackjack();
         assertEquals( true, blackjackGame.dealerPlayer.isBlackjack() );
         assertEquals( false, blackjackGame.player.isBlackjack() );
-        Player winner = blackjackGame.decideWinner();
-        assertEquals( winner, blackjackGame.dealerPlayer);
+        blackjackGame.decideWinnerString();
+        assertEquals( true , blackjackGame.dealerPlayer.winner);
     }
     //
     @Test
@@ -137,8 +137,8 @@ public class BlackjackGameTest {
         blackjackGame.dealerBlackjack();
         assertEquals( false, blackjackGame.player.isBlackjack() );
         assertEquals( false, blackjackGame.dealerPlayer.isBlackjack());
-        Player winner = blackjackGame.decideWinner();
-        assertEquals( winner, blackjackGame.player);
+        blackjackGame.decideWinnerString();
+        assertEquals( true, blackjackGame.player.winner);
     }
     //
     @Test
@@ -155,8 +155,8 @@ public class BlackjackGameTest {
         blackjackGame.dealerBlackjack();
         assertEquals( false, blackjackGame.player.isBlackjack() );
         assertEquals( false, blackjackGame.dealerPlayer.isBlackjack());
-        Player winner = blackjackGame.decideWinner();
-        assertEquals( winner, blackjackGame.dealerPlayer);
+        blackjackGame.decideWinnerString();
+        assertEquals( true, blackjackGame.dealerPlayer.winner);
     }
 
 

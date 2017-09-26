@@ -10,22 +10,14 @@ import java.util.ArrayList;
 
 public class BlackjackGame {
 
-    public Player getPlayer() {
-        return player;
-    }
-
-    public Player getDealerPlayer() {
-        return dealerPlayer;
-    }
-
     Player player;
     Player dealerPlayer;
     Dealer dealer;
     NumberGenerating randomNumberGenerator;
 
     public BlackjackGame(NumberGenerating numberGenerator) {
-        this.dealerPlayer = new Player("Dealer", true);
         this.player = new Player("Player", false);
+        this.dealerPlayer = new Player("Dealer", true);
         this.dealer = new Dealer();
         dealer.createDeck();
         this.randomNumberGenerator = numberGenerator;
@@ -62,16 +54,10 @@ public class BlackjackGame {
         return additionalCard;
     }
 
-//    public void dealerHasLessThan17() {
-//        if (dealerPlayer.getHandWorth() < 17) {
-//             dealACardToDealerPlayer();
-//        }
-//    }
-
     public void dealerWhileUnder17() {
-        do {
+        while ( dealerPlayer.getHandWorth() < 17 ) {
             dealACardToDealerPlayer();
-        } while (dealerPlayer.getHandWorth() < 17 );
+        }
     }
 
     public void dealerBlackjack() {
@@ -88,23 +74,49 @@ public class BlackjackGame {
         }
     }
 
-    public Player decideWinner() {
+//    public Player decideWinner() {
+//        dealerWhileUnder17();
+//        playerBlackjack();
+//        dealerBlackjack();
+//        if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
+//            return player;
+//        }
+//        else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
+//            return player;
+//        }
+//        else if( !player.isBust() && dealerPlayer.isBust() ) {
+//            return player;
+//        }
+//        else {
+//            return dealerPlayer;
+//        }
+//
+//    }
+
+    public String decideWinnerString() {
         dealerWhileUnder17();
+        player.isBust();
+        dealerPlayer.isBust();
+        playerBlackjack();
+        dealerBlackjack();
         if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
-            Log.d("outcome", "player blackjack dealer not");
-            return player;
+            player.setWinner(true);
+            return "OMG U G07 BL4KKJ4KK!!! L337!! H4XX0R!!!";
         }
         else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
-            Log.d("outcome","player > dealer / player not bust");
-            return player;
+            player.setWinner(true);
+            return "You won!";
         }
         else if( !player.isBust() && dealerPlayer.isBust() ) {
-            Log.d("outcome", "player not bust / dealer is");
-            return player;
+            player.setWinner(true);
+            return "Lol, the dealer is bust!";
+        }
+        else if( player.isBust() && dealerPlayer.isBust() ) {
+            return "Nobody won this time around!";
         }
         else {
-            Log.d("outcome", "Other (dealerwin)");
-            return dealerPlayer;
+            dealerPlayer.setWinner(true);
+            return "The dealer won!  You suck lol";
         }
     }
 

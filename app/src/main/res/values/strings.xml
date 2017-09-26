@@ -3,4 +3,5 @@
     <string name="stick_button">Stick</string>
     <string name="twist_button">Twist</string>
     <string name="player_score">Your score: </string>
+    <string name="new_game">New Game</string>
 </resources>

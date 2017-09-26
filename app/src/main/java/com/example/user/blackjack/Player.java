@@ -29,6 +29,10 @@ public class Player {
         this.blackjack = blackjack;
     }
 
+    public void setWinner(boolean winner) {
+        this.winner = winner;
+    }
+
     public boolean isBlackjack() {
         return blackjack;
     }

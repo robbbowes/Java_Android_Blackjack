@@ -1,6 +1,7 @@
 package com.example.user.blackjack;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     TextView third_card;
     TextView playerScore;
     TextView winnerDisplay;
+    TextView dealerScore;
 
 
 
@@ -45,6 +47,8 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
 
         playerScore = (TextView) findViewById((R.id.player_score));
         playerScore.setText(currentPlayerScore);
+
+
     }
 
     public void onClickNewGame(View button) {
@@ -58,6 +62,17 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         Log.d("Player score: ", currentPlayerScore);
         Log.d("Dealer first card: ", dealerFirstCard);
         Log.d("Dealer second card: ", dealerSecondCard);
+
+        String newPlayerScore = "" + blackjackGame.player.getHandWorth();
+        playerScore = (TextView) findViewById(R.id.player_score);
+        playerScore.setText(newPlayerScore);
+
+//        Clears the dealer and winner textviews
+        dealerScore = (TextView) findViewById(R.id.dealer_score);
+        dealerScore.setText("");
+        winnerDisplay = (TextView) findViewById(R.id.winner_display);
+        winnerDisplay.setText("");
+
     }
 
     public void onClickTwist(View button) {
@@ -80,16 +95,19 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         playerScore = (TextView) findViewById((R.id.player_score));
         playerScore.setText(playerscore);
 
+
+
+
+
     }
 
 
     public void onClickStick(View button) {
 
 
+        String whoWon = blackjackGame.decideWinnerString();
 
-
-
-        String whoWon = blackjackGame.decideWinner().getName();
+//        String whoWonString = whoWon.getName();
         winnerDisplay = (TextView) findViewById(R.id.winner_display);
         winnerDisplay.setText(whoWon);
 
@@ -105,9 +123,20 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
 
         Log.i("After", "" + blackjackGame.dealerPlayer.getHandWorth());
 
+        String currentDealerScore = "" + blackjackGame.dealerPlayer.getHandWorth();
+        dealerScore = (TextView) findViewById(R.id.dealer_score);
+        dealerScore.setText(currentDealerScore);
 
-
-
+        if (blackjackGame.dealerPlayer.winner) {
+            MediaPlayer loseSound = MediaPlayer.create(this, R.raw.youlosesound);
+            loseSound.start();
+        } else if (blackjackGame.player.winner){
+            MediaPlayer winSound = MediaPlayer.create(this, R.raw.youwinsound);
+            winSound.start();
+        } else {
+            MediaPlayer drawSound = MediaPlayer.create(this, R.raw.draw);
+            drawSound.start();
+        }
 
 
     }
