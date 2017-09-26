@@ -60,15 +60,9 @@ public class BlackjackGameTest {
     @Test
     public void aceWillNotCountAsHighIfOver12() {
         Card aceSpades = new Card(Suit.SPADES, Value.ACE);
-        Card aceClubs = new Card(Suit.CLUBS, Value.ACE);
-        Card aceDiamonds = new Card(Suit.DIAMONDS, Value.ACE);
         Card kingDiamonds = new Card(Suit.DIAMONDS, Value.KING);
-        Card eightClubs = new Card(Suit.CLUBS, Value.EIGHT);
         blackjackGame.player.addCardToHand(aceSpades);
-//        player.addCardToHand(aceClubs);
-//        player.addCardToHand(aceDiamonds);
         blackjackGame.player.addCardToHand(kingDiamonds);
-//        player.addCardToHand(eightClubs);
         assertEquals( 21,  blackjackGame.player.getHandWorth() );
     }
 

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,38 +23,70 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     TextView playerScore;
     TextView winnerDisplay;
     TextView dealerScore;
-
-
+    ImageView firstSuitImage;
+    ImageView secondSuitImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blackjack_launcher);
 
+//        SET UP GAME
+
         blackjackGame = new BlackjackGame();
         blackjackGame.dealToBoth();
+
+//        CREATE AND ADD PICS TO FIRST AND SECOND CARDS BASED ON WHAT PLAYER HAS IN HAND
+
+        firstSuitImage = (ImageView) findViewById(R.id.first_suit_image);
+        String firstCardSuit = blackjackGame.player.getHand().get(0).getSuitString();
+        int firstCardSuitId = getResources().getIdentifier(firstCardSuit, "drawable", getPackageName());
+        firstSuitImage.setImageResource(firstCardSuitId);
+
+
+        secondSuitImage = (ImageView) findViewById(R.id.second_suit_image);
+        String secondCardSuit = blackjackGame.player.getHand().get(1).getSuitString();
+        int secondCardSuitId = getResources().getIdentifier(secondCardSuit, "drawable", getPackageName());
+        secondSuitImage.setImageResource(secondCardSuitId);
+
+//        CREATE BOX FOR PLAYER SCORE
+
         String currentPlayerScore = "" + blackjackGame.player.getHandWorth();
 
         String dealerFirstCard = blackjackGame.dealerPlayer.getHand().get(0).getValue().toString();
         String dealerSecondCard = blackjackGame.dealerPlayer.getHand().get(1).getValue().toString();
+        playerScore = (TextView) findViewById((R.id.player_score));
+        playerScore.setText(currentPlayerScore);
 
         Log.d("Dealer first card: ", dealerFirstCard);
         Log.d("Dealer second card: ", dealerSecondCard);
+
+
+//        CREATE BUTTONS FOR STICK AND TWIST AS WELL AS
 
         twist_button = (Button) findViewById(R.id.twist_button);
         stick_button = (Button) findViewById(R.id.stick_button);
         third_card = (TextView) findViewById(R.id.third_card);
         winnerDisplay = (TextView) findViewById(R.id.winner_display);
-
-        playerScore = (TextView) findViewById((R.id.player_score));
-        playerScore.setText(currentPlayerScore);
-
-
     }
+
+
 
     public void onClickNewGame(View button) {
         blackjackGame = new BlackjackGame();
         blackjackGame.dealToBoth();
+
+//        REDRAW FIRST AND SECOND CARDS BASED ON NEW CARDS
+
+        String firstCardSuit = blackjackGame.player.getHand().get(0).getSuitString();
+        int firstCardSuitId = getResources().getIdentifier(firstCardSuit, "drawable", getPackageName());
+        firstSuitImage.setImageResource(firstCardSuitId);
+
+        String secondCardSuit = blackjackGame.player.getHand().get(1).getSuitString();
+        int secondCardSuitId = getResources().getIdentifier(secondCardSuit, "drawable", getPackageName());
+        secondSuitImage.setImageResource(secondCardSuitId);
+
+
         String currentPlayerScore = "" + blackjackGame.player.getHandWorth();
 
         String dealerFirstCard = blackjackGame.dealerPlayer.getHand().get(0).getValue().toString();
@@ -67,7 +100,6 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         playerScore = (TextView) findViewById(R.id.player_score);
         playerScore.setText(newPlayerScore);
 
-//        Clears the dealer and winner textviews
         dealerScore = (TextView) findViewById(R.id.dealer_score);
         dealerScore.setText("");
         winnerDisplay = (TextView) findViewById(R.id.winner_display);
@@ -104,19 +136,11 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
 
     public void onClickStick(View button) {
 
-
         String whoWon = blackjackGame.decideWinnerString();
-
-//        String whoWonString = whoWon.getName();
         winnerDisplay = (TextView) findViewById(R.id.winner_display);
         winnerDisplay.setText(whoWon);
 
         Log.i("Test", "Stick button clicked");
-
-//        Player winnerWinnerChickenDinner = blackjackGame.decideWinner();
-
-//        Card cardDealtToDealer = blackjackGame.dealACardToDealerPlayer();
-
         Log.i("Dealer first card", blackjackGame.dealerPlayer.getHand().get(0).getValue().toString());
         Log.i("Dealer second card", blackjackGame.dealerPlayer.getHand().get(1).getValue().toString());
         Log.i("Dealer hand size:", "" + blackjackGame.dealerPlayer.getHand().size());
@@ -140,6 +164,12 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
 
 
     }
+
+
+
+
+
+
 
 
 

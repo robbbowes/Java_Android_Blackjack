@@ -24,4 +24,12 @@ public class Card {
     int getValueRanking() {
         return value.ordinal() + 1;
     }
+
+    String getSuitString() {
+        return suit.toString().toLowerCase();
+    }
+
+    String getValueString() {
+        return value.toString().toLowerCase();
+    }
 }
