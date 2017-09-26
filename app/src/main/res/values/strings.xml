@@ -6,4 +6,7 @@
     <string name="new_game">New Game</string>
     <string name="your_score">Your score:</string>
     <string name="dealer_score">Dealer score:</string>
+    <string name="new_game_button">New Game</string>
+    <string name="player_score_text">Your score:</string>
+    <string name="dealer_score_text">Dealer score:</string>
 </resources>
