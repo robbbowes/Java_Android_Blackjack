@@ -7,13 +7,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
-import java.util.Random;
 
 public class BlackjackLauncherActivity extends AppCompatActivity {
 
@@ -39,6 +37,7 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     TextView dealerFirstCardRank;
     ImageView dealerSecondSuitImage;
     TextView dealerSecondCardRank;
+    ImageView dealerFirstCard;
 
 //    ADDITIONAL CARDS
 
@@ -65,7 +64,7 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         Log.d("Player first:", blackjackGame.player.getHand().get(0).getValueString() + blackjackGame.player.getHand().get(0).getSuit().toString());
         Log.d("Player second:", blackjackGame.player.getHand().get(1).getValueString() + blackjackGame.player.getHand().get(1).getSuit().toString());
 
-//        CREATE AND ADD PICS TO FIRST AND SECOND CARDS BASED ON WHAT PLAYER HAS IN HAND
+//        CREATE AND ADD PICS TO FIRST AND SECOND CARDS BASED ON WHAT PLAYER AND DEALER HAVE IN THEIR HANDS
 
         HashMap<Value, String> rank = new HashMap<>();
         rank.put(Value.TWO, "2");
@@ -109,6 +108,13 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         dealerSecondCardRank = (TextView) findViewById(R.id.dealer_second_rank);
         dealerSecondCardRank.setText(dealerSecondValueString);
 
+        dealerFirstCard = (ImageView) findViewById(R.id.dealer_first_card);
+        dealerFirstCard.setImageResource(R.drawable.cardback);
+
+//        ASSIGNING BUT NOT SETTING DEALER FIRST CARD
+
+
+
 
 
 //        CREATE BOX FOR PLAYER SCORE
@@ -143,7 +149,6 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     }
 
 
-
     public void onClickTwist(View button) {
 
         Log.i("Test", "Twist button clicked");
@@ -173,7 +178,6 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
             third_card = (TextView) findViewById(R.id.third_card);
             third_card.setText("3rd Card: The " + playerThirdCardRank + " of " + playerThirdCardSuit);
             Log.d("Player third:", blackjackGame.player.getHand().get(2).getValueString());
-
         }
 
         if (blackjackGame.player.getHand().size() > 3 ) {
@@ -183,7 +187,6 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
             fourth_card = (TextView) findViewById(R.id.fourth_card);
             fourth_card.setText("4th Card: The " + playerFourthCardRank + " of " + playerFourthCardSuit);
             Log.d("Player fourth:", blackjackGame.player.getHand().get(3).getValueString());
-
         }
 
         if (blackjackGame.player.getHand().size() > 4 ) {
@@ -193,7 +196,6 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
             fifth_card = (TextView) findViewById(R.id.fifth_card);
             fifth_card.setText("5th Card: The " + playerFifthCardRank + " of " + playerFifthCardSuit);
             Log.d("Player fifth:", blackjackGame.player.getHand().get(4).getValueString());
-
         }
     }
 
@@ -225,6 +227,37 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
             MediaPlayer drawSound = MediaPlayer.create(this, R.raw.draw);
             drawSound.start();
         }
+
+
+        dealerFirstCard.setImageResource(R.drawable.blankcard);
+
+        dealerFirstSuitImage = (ImageView) findViewById(R.id.dealer_first_suit);
+        String dealerFirstSuit = blackjackGame.dealerPlayer.getHand().get(0).getSuitString();
+        int dealerFirstCardSuitId = getResources().getIdentifier(dealerFirstSuit, "drawable", getPackageName());
+        dealerFirstSuitImage.setImageResource(dealerFirstCardSuitId);
+
+
+
+        HashMap<Value, String> rank = new HashMap<>();
+        rank.put(Value.TWO, "2");
+        rank.put(Value.THREE, "3");
+        rank.put(Value.FOUR, "4");
+        rank.put(Value.FIVE, "5");
+        rank.put(Value.SIX, "6");
+        rank.put(Value.SEVEN, "7");
+        rank.put(Value.EIGHT, "8");
+        rank.put(Value.NINE, "9");
+        rank.put(Value.TEN, "10");
+        rank.put(Value.JACK, "J");
+        rank.put(Value.QUEEN, "Q");
+        rank.put(Value.KING, "K");
+        rank.put(Value.ACE, "A");
+
+        String dealerFirstValueString = rank.get(blackjackGame.dealerPlayer.getHand().get(0).getValue());
+        dealerFirstCardRank = (TextView) findViewById(R.id.dealer_first_rank);
+        dealerFirstCardRank.setText(dealerFirstValueString);
+
+
 
 
     }
