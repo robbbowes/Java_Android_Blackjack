@@ -25,13 +25,11 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     TextView winnerDisplay;
 
 //    CARDS
-
 //    PLAYER
     ImageView firstSuitImage;
     TextView firstCardRank;
     ImageView secondSuitImage;
     TextView secondCardRank;
-
 //    DEALER
     ImageView dealerFirstSuitImage;
     TextView dealerFirstCardRank;
@@ -40,17 +38,14 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     ImageView dealerFirstCard;
 
 //    ADDITIONAL CARDS
-
 //    PLAYER
     TextView third_card;
     TextView fourth_card;
     TextView fifth_card;
-
 //    DEALER
-
-
-
-
+    TextView dealer_third_card;
+    TextView dealer_fourth_card;
+    TextView dealer_fifth_card;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +106,6 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         dealerFirstCard = (ImageView) findViewById(R.id.dealer_first_card);
         dealerFirstCard.setImageResource(R.drawable.cardback);
 
-//        ASSIGNING BUT NOT SETTING DEALER FIRST CARD
-
-
-
-
-
 //        CREATE BOX FOR PLAYER SCORE
 
         String currentPlayerScore = "" + blackjackGame.player.getHandWorth();
@@ -139,6 +128,8 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
     }
 
 
+//    ON CLICK NEW GAME BUTTON
+
 
     public void onClickNewGame(View button) {
 
@@ -147,6 +138,9 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         finish();
 
     }
+
+
+//    ON CLICK TWIST BUTTON
 
 
     public void onClickTwist(View button) {
@@ -198,6 +192,9 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
             Log.d("Player fifth:", blackjackGame.player.getHand().get(4).getValueString());
         }
     }
+
+
+//    ON CLICK STICK BUTTON
 
 
     public void onClickStick(View button) {
@@ -256,6 +253,33 @@ public class BlackjackLauncherActivity extends AppCompatActivity {
         String dealerFirstValueString = rank.get(blackjackGame.dealerPlayer.getHand().get(0).getValue());
         dealerFirstCardRank = (TextView) findViewById(R.id.dealer_first_rank);
         dealerFirstCardRank.setText(dealerFirstValueString);
+
+        if (blackjackGame.dealerPlayer.getHand().size() > 2 ) {
+
+            String dealerPlayerThirdCardSuit = "" + blackjackGame.dealerPlayer.getHand().get(2).getSuitString();
+            String dealerPlayerThirdCardRank = "" + blackjackGame.dealerPlayer.getHand().get(2).getValueString();
+            dealer_third_card = (TextView) findViewById(R.id.dealer_third_card);
+            dealer_third_card.setText("3rd: The " + dealerPlayerThirdCardRank + " of " + dealerPlayerThirdCardSuit);
+            Log.d("Dealer third:", blackjackGame.dealerPlayer.getHand().get(2).getValueString());
+        }
+
+        if (blackjackGame.dealerPlayer.getHand().size() > 3 ) {
+
+            String dealerPlayerFourthCardSuit = "" + blackjackGame.dealerPlayer.getHand().get(3).getSuitString();
+            String dealerPlayerFourthCardRank = "" + blackjackGame.dealerPlayer.getHand().get(3).getValueString();
+            dealer_fourth_card = (TextView) findViewById(R.id.dealer_fourth_card);
+            dealer_fourth_card.setText("4th Card: The " + dealerPlayerFourthCardRank + " of " + dealerPlayerFourthCardSuit);
+            Log.d("Dealer fourth:", blackjackGame.dealerPlayer.getHand().get(3).getValueString());
+        }
+
+        if (blackjackGame.dealerPlayer.getHand().size() > 4 ) {
+
+            String dealerPlayerFifthCardSuit = "" + blackjackGame.dealerPlayer.getHand().get(4).getSuitString();
+            String dealerPlayerFifthCardRank = "" + blackjackGame.dealerPlayer.getHand().get(4).getValueString();
+            dealer_fifth_card = (TextView) findViewById(R.id.dealer_fifth_card);
+            dealer_fifth_card.setText("5th Card: The " + dealerPlayerFifthCardRank + " of " + dealerPlayerFifthCardSuit);
+            Log.d("Dealer fifth:", blackjackGame.dealerPlayer.getHand().get(4).getValueString());
+        }
 
 
 
