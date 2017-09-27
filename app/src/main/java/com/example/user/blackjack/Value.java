@@ -18,8 +18,6 @@ public enum Value {
     JACK,
     QUEEN,
     KING,
-    ACE;
-
-
+    ACE
 }
 

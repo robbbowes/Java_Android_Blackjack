@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Blackjack</string>
+    <string name="app_name">SOLIDAF CardGames Inc.</string>
     <string name="stick_button">Stick</string>
     <string name="twist_button">Twist</string>
     <string name="player_score">Your score: </string>
@@ -9,4 +9,5 @@
     <string name="new_game_button">New Game</string>
     <string name="player_score_text">Your score:</string>
     <string name="dealer_score_text">Dealer score:</string>
+    <string name="blackjack_title">Blackjack</string>
 </resources>

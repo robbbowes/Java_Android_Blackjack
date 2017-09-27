@@ -58,7 +58,7 @@ public class Player {
 
     int getHandWorth() {
 
-        HashMap<Value, Integer> values = new HashMap<Value, Integer>();
+        HashMap<Value, Integer> values = new HashMap<>();
         values.put(Value.TWO, 2);
         values.put(Value.THREE, 3);
         values.put(Value.FOUR, 4);

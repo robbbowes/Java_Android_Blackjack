@@ -74,25 +74,6 @@ public class BlackjackGame {
         }
     }
 
-//    public Player decideWinner() {
-//        dealerWhileUnder17();
-//        playerBlackjack();
-//        dealerBlackjack();
-//        if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
-//            return player;
-//        }
-//        else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
-//            return player;
-//        }
-//        else if( !player.isBust() && dealerPlayer.isBust() ) {
-//            return player;
-//        }
-//        else {
-//            return dealerPlayer;
-//        }
-//
-//    }
-
     public String decideWinnerString() {
         dealerWhileUnder17();
         player.isBust();
@@ -119,88 +100,5 @@ public class BlackjackGame {
             return "The dealer won!  You suck lol";
         }
     }
-
-
-
-//    public String displayWinner() {
-//        if ( decideWinner() == player ) {
-//            return ""
-//        }
-//    }
-
-
-//    public void dealerBlackjack(Player dealerPlayer) {
-//
-//        if ( ( dealerPlayer.getHandWorth() == 21 ) && ( dealerPlayer.getHand().size() == 2 )) {
-//            dealerPlayer.setBlackjack(true);
-//        }
-//    }
-//
-//    public void playerBlackjack(Player player) {
-//
-//        if ( ( player.getHandWorth() == 21 ) && ( player.getHand().size() == 2 )) {
-//            player.setBlackjack(true);
-//        }
-//    }
-//
-//    public Player decideWinner(Player player, Player dealerPlayer) {
-////        dealerHasLessThan17(dealerPlayer);
-////        dealerHasLessThan17(dealerPlayer);
-////        dealerHasLessThan17(dealerPlayer);
-//        if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
-//            return player;
-//        }
-//        else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
-//            return player;
-//        }
-//        else if( !player.isBust() && dealerPlayer.isBust() ) {
-//            return player;
-//        }
-//        else {
-//            return dealerPlayer;
-//        }
-//    }
-
-
-
-
-
-//    boolean didTheDealerWin() {
-//        if (dealerPlayer.getHandWorth() >= player.getHandWorth() ) {
-//            return true;
-//        } else if ( dealerPlayer.isBlackjack() ) {
-//            return true;
-//        } else if ( !dealerPlayer.isBust() && player.isBust() ) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-
-//    boolean didTheDealerWin() {
-//        if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
-//            return false;
-//        }
-//        else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
-//            return false;
-//        }
-//        else if( !player.isBust() && dealerPlayer.isBust() ) {
-//            return false;
-//        }
-//        else {
-//            return true;
-//        }
-//    }
-
-//    String getResult() {
-//        dealerHasLessTHan17();
-//        dealerHasLessTHan17();
-//        dealerHasLessTHan17();
-//        if (didTheDealerWin() != false) {
-//            return "The dealer always wins!";
-//        } else {
-//            return "You managed to win!";
-//        }
-//    }
 
 }

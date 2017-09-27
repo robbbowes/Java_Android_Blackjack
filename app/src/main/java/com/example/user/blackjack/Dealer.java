@@ -49,6 +49,4 @@ public class Dealer {
         return randomCard;
     }
 
-
-
 }
