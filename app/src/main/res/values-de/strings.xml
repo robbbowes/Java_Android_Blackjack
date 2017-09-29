@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SOLIDAF CardGames Inc.</string>
+    <string name="blackjack_title">Blackjack</string>
+    <string name="dealer_score">Croupier::</string>
+    <string name="dealer_score_text">Croupier:</string>
+    <string name="new_game">Neues Spiel</string>
+    <string name="new_game_button">Neues Spiel</string>
+    <string name="player_score">Sie haben:</string>
+    <string name="player_score_text">Sie haben:</string>
+    <string name="stick_button">Aussetzen</string>
+    <string name="twist_button">Ziehen</string>
+    <string name="your_score">Sie haben:</string>
+</resources>

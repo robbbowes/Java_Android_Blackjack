@@ -82,22 +82,22 @@ public class BlackjackGame {
         dealerBlackjack();
         if ( player.isBlackjack() && ( !dealerPlayer.isBlackjack() ) ) {
             player.setWinner(true);
-            return "OMG U G07 BL4KKJ4KK!!! L337!! H4XX0R!!!";
+            return "BLACKJACK! A winner is you!";
         }
         else if( ( player.getHandWorth() > dealerPlayer.getHandWorth() ) && !player.isBust() ) {
             player.setWinner(true);
-            return "You won!";
+            return "You win!";
         }
         else if( !player.isBust() && dealerPlayer.isBust() ) {
             player.setWinner(true);
-            return "Lol, the dealer is bust!";
+            return "You win! The dealer is bust!";
         }
         else if( player.isBust() && dealerPlayer.isBust() ) {
             return "Nobody won this time around!";
         }
         else {
             dealerPlayer.setWinner(true);
-            return "The dealer won!  You suck lol";
+            return "The dealer won! You suck lol";
         }
     }
 

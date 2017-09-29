@@ -27,25 +27,25 @@ public class BlackjackActivity extends AppCompatActivity {
 
     ImageButton back_to_games;
 
-//    CARDS
+    //    CARDS
 //    PLAYER
     ImageView firstSuitImage;
     TextView firstCardRank;
     ImageView secondSuitImage;
     TextView secondCardRank;
-//    DEALER
+    //    DEALER
     ImageView dealerFirstSuitImage;
     TextView dealerFirstCardRank;
     ImageView dealerSecondSuitImage;
     TextView dealerSecondCardRank;
     ImageView dealerFirstCard;
 
-//    ADDITIONAL CARDS
+    //    ADDITIONAL CARDS
 //    PLAYER
     TextView third_card;
     TextView fourth_card;
     TextView fifth_card;
-//    DEALER
+    //    DEALER
     TextView dealer_third_card;
     TextView dealer_fourth_card;
     TextView dealer_fifth_card;
@@ -173,34 +173,34 @@ public class BlackjackActivity extends AppCompatActivity {
         playerScore = (TextView) findViewById((R.id.player_score));
         playerScore.setText(playerscore);
 
-        if (blackjackGame.player.getHand().size() > 2 ) {
+        if (blackjackGame.player.getHand().size() > 2) {
 
             String playerThirdCardSuit = "" + blackjackGame.player.getHand().get(2).getSuitString();
             String playerThirdCardRank = "" + blackjackGame.player.getHand().get(2).getValueString();
             third_card = (TextView) findViewById(R.id.third_card);
-            third_card.setText("3rd Card: The " + playerThirdCardRank + " of " + playerThirdCardSuit);
+            third_card.setText("3rd: The " + playerThirdCardRank + " of " + playerThirdCardSuit);
             Log.d("Player third:", blackjackGame.player.getHand().get(2).getValueString());
         }
 
-        if (blackjackGame.player.getHand().size() > 3 ) {
+        if (blackjackGame.player.getHand().size() > 3) {
 
             String playerFourthCardSuit = "" + blackjackGame.player.getHand().get(3).getSuitString();
             String playerFourthCardRank = "" + blackjackGame.player.getHand().get(3).getValueString();
             fourth_card = (TextView) findViewById(R.id.fourth_card);
-            fourth_card.setText("4th Card: The " + playerFourthCardRank + " of " + playerFourthCardSuit);
+            fourth_card.setText("4th: The " + playerFourthCardRank + " of " + playerFourthCardSuit);
             Log.d("Player fourth:", blackjackGame.player.getHand().get(3).getValueString());
         }
 
-        if (blackjackGame.player.getHand().size() > 4 ) {
+        if (blackjackGame.player.getHand().size() > 4) {
 
             String playerFifthCardSuit = "" + blackjackGame.player.getHand().get(4).getSuitString();
             String playerFifthCardRank = "" + blackjackGame.player.getHand().get(4).getValueString();
             fifth_card = (TextView) findViewById(R.id.fifth_card);
-            fifth_card.setText("5th Card: The " + playerFifthCardRank + " of " + playerFifthCardSuit);
+            fifth_card.setText("5th: The " + playerFifthCardRank + " of " + playerFifthCardSuit);
             Log.d("Player fifth:", blackjackGame.player.getHand().get(4).getValueString());
         }
 
-        if (blackjackGame.player.isBust() ) {
+        if (blackjackGame.player.isBust()) {
             twist_button.setVisibility(View.INVISIBLE);
         }
     }
@@ -226,7 +226,7 @@ public class BlackjackActivity extends AppCompatActivity {
         if (blackjackGame.dealerPlayer.winner) {
             MediaPlayer loseSound = MediaPlayer.create(this, R.raw.youlosesound);
             loseSound.start();
-        } else if (blackjackGame.player.winner){
+        } else if (blackjackGame.player.winner) {
             MediaPlayer winSound = MediaPlayer.create(this, R.raw.youwinsound);
             winSound.start();
         } else {
@@ -246,7 +246,7 @@ public class BlackjackActivity extends AppCompatActivity {
         dealerFirstCardRank = (TextView) findViewById(R.id.dealer_first_rank);
         dealerFirstCardRank.setText(dealerFirstValueString);
 
-        if (blackjackGame.dealerPlayer.getHand().size() > 2 ) {
+        if (blackjackGame.dealerPlayer.getHand().size() > 2) {
 
             String dealerPlayerThirdCardSuit = "" + blackjackGame.dealerPlayer.getHand().get(2).getSuitString();
             String dealerPlayerThirdCardRank = "" + blackjackGame.dealerPlayer.getHand().get(2).getValueString();
@@ -255,7 +255,7 @@ public class BlackjackActivity extends AppCompatActivity {
             Log.d("Dealer third:", blackjackGame.dealerPlayer.getHand().get(2).getValueString());
         }
 
-        if (blackjackGame.dealerPlayer.getHand().size() > 3 ) {
+        if (blackjackGame.dealerPlayer.getHand().size() > 3) {
 
             String dealerPlayerFourthCardSuit = "" + blackjackGame.dealerPlayer.getHand().get(3).getSuitString();
             String dealerPlayerFourthCardRank = "" + blackjackGame.dealerPlayer.getHand().get(3).getValueString();
@@ -264,7 +264,7 @@ public class BlackjackActivity extends AppCompatActivity {
             Log.d("Dealer fourth:", blackjackGame.dealerPlayer.getHand().get(3).getValueString());
         }
 
-        if (blackjackGame.dealerPlayer.getHand().size() > 4 ) {
+        if (blackjackGame.dealerPlayer.getHand().size() > 4) {
 
             String dealerPlayerFifthCardSuit = "" + blackjackGame.dealerPlayer.getHand().get(4).getSuitString();
             String dealerPlayerFifthCardRank = "" + blackjackGame.dealerPlayer.getHand().get(4).getValueString();
@@ -274,5 +274,4 @@ public class BlackjackActivity extends AppCompatActivity {
         }
 
     }
-
 }
